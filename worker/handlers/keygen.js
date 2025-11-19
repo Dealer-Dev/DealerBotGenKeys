@@ -43,7 +43,7 @@ Contacta al administrador si deseas acceso.`,
 `🔐 Key generada correctamente
 
 Key:
-${key}
+`${key}`
 
 Generada por: @${username}
 Expira en: 2 horas`;
