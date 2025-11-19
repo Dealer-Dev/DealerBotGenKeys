@@ -40,7 +40,7 @@ Contacta al administrador si deseas acceso.`,
 
   // Send in PRE block (tap to copy)
   const message = `
-🔐 <b>Key generada correctamente</b>
+🔐 <b>Key generada correctamente xd</b>
 
 ```${key}```
 
