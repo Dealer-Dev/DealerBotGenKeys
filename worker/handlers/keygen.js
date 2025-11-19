@@ -43,7 +43,7 @@ Contacta al administrador si deseas acceso.`,
 
 `🔐 *Key generada correctamente xd*
 
-\`\`\`
+Key: \`\`\`
 ${key}
 \`\`\`
 
