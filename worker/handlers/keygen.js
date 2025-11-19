@@ -42,7 +42,9 @@ Contacta al administrador si deseas acceso.`,
   const message = `
 🔐 <b>Key generada correctamente xd</b>
 
-```${key}```
+\`\`\`
+${key}
+\`\`\`
 
 Generada por: @${username}
 Expira en: 2 horas
