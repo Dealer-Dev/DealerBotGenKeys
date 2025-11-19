@@ -5,8 +5,12 @@ import { isAdmin } from "../utils/auth.js";
 import { generateKey } from "../utils/generator.js";
 import { saveKey } from "../utils/db.js";
 
+function escapeMarkdownV2(text) {
+  return text.replace(/[_*[\]()~`>#+\-=|{}.!]/g, "\\$&");
+}
+
 export default async function keygenCmd(chatId, username, env) {
-  // Check permissions
+
   if (!isAdmin(env, chatId)) {
     return sendMessageWithButton(
       env,
@@ -20,11 +24,11 @@ Contacta al administrador si deseas acceso.`,
     );
   }
 
-  // Generate key
   const key = generateKey();
+  const safeKey = escapeMarkdownV2(key);
 
   const now = new Date();
-  const expires = new Date(now.getTime() + 2 * 60 * 60 * 1000); // +2 horas
+  const expires = new Date(now.getTime() + 2 * 60 * 60 * 1000);
 
   const keyData = {
     key: key,
@@ -35,20 +39,11 @@ Contacta al administrador si deseas acceso.`,
     used: false
   };
 
-  // Save to KV
   await saveKey(env, key, keyData);
 
-  // Build message with Markdown monospaced block
+  // Mensaje en MarkdownV2
   const message =
-`🔐 *Key generada correctamente 🐰*
+`🔐 *Key generada correctamente 🐰*\n\n\`\`\`\n${safeKey}\n\`\`\`\n\n*Generada por:* @${username}\n*Expira en:* 2 horas`;
 
-\`\`\`
-${key}
-\`\`\`
-
-*Generada por:* @${username}
-*Expira en:* 2 horas`;
-
-  // Markdown parse mode enabled
-  return sendMessage(env, chatId, message, { parse_mode: "Markdown" });
+  return sendMessage(env, chatId, message, { parse_mode: "MarkdownV2" });
 }
