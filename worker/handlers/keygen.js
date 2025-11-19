@@ -47,7 +47,6 @@ Contacta al administrador si deseas acceso.`,
 ${key}
 \`\`\`
 
-
 *Generada por:* @${username}
 *Expira en:* 2 horas`;
 
