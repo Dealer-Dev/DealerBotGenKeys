@@ -1,1 +1,14 @@
+name = "dealerbotgenkeys"
+main = "worker/index.js"
+compatibility_date = "2025-01-01"
 
+kv_namespaces = [
+  { binding = "DB", id = "0d76ba25e7e84ec28d44c983d7c95b4c" }
+]
+
+[vars]
+ADMIN_MAIN = "1394196343"
+
+routes = [
+  { pattern = "keys.script-dealer.com/*", zone_id = "ca163d45b8e58e0a9dfabff19123e7f4" }
+]
