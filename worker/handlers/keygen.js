@@ -40,9 +40,11 @@ Contacta al administrador si deseas acceso.`,
 
   // Build message with Markdown monospaced block
   const message =
-`🔐 *Key generada correctamente xd*
+`🔐 *Key generada correctamente 🐰*
 
-`${key}`
+\`\`\`
+${key}
+\`\`\`
 
 *Generada por:* @${username}
 *Expira en:* 2 horas`;
