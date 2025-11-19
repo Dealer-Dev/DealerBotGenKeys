@@ -27,7 +27,7 @@ Contacta al administrador si deseas acceso.`,
   const expires = new Date(now.getTime() + 2 * 60 * 60 * 1000); // +2 horas
 
   const keyData = {
-    key,
+    key: key,
     owner: `@${username}`,
     owner_id: chatId,
     created_at: now.toISOString(),
@@ -38,17 +38,19 @@ Contacta al administrador si deseas acceso.`,
   // Save to KV
   await saveKey(env, key, keyData);
 
-  // Send in PRE block (tap to copy)
-  const message = `
-🔐 <b>Key generada correctamente xd</b>
+  // Build message with Markdown monospaced block
+  const message =
 
+`🔐 *Key generada correctamente xd*
 
+\`\`\`
 ${key}
+\`\`\`
 
 
-Generada por: @${username}
-Expira en: 2 horas
-`;
+*Generada por:* @${username}
+*Expira en:* 2 horas`;
 
-  return sendMessage(env, chatId, message);
+  // Markdown parse mode enabled
+  return sendMessage(env, chatId, message, { parse_mode: "Markdown" });
 }
