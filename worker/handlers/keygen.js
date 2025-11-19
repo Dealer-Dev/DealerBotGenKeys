@@ -38,8 +38,8 @@ Contacta al administrador si deseas acceso.`,
   // Save to KV
   await saveKey(env, key, keyData);
 
-  // Message with monospaced code block (MarkdownV2)
-  const message = 
+  // Build message with Markdown monospaced block
+  const message =
 `🔐 *Key generada correctamente*
 
 \`\`\`
@@ -49,5 +49,6 @@ ${key}
 *Generada por:* @${username}
 *Expira en:* 2 horas`;
 
-  return sendMessage(env, chatId, message, "Markdown");
+  // Markdown parse mode enabled
+  return sendMessage(env, chatId, message, { parse_mode: "Markdown" });
 }
