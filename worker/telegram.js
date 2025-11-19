@@ -9,7 +9,8 @@ export async function sendMessage(env, chatId, text, options = {}) {
   const body = {
     chat_id: chatId,
     text: text,
-    parse_mode: "MarkdownV2",
+    parse_mode: "HTML",
+    parse_mode: options.parse_mode || "HTML",
     ...options
   };
 
