@@ -4,10 +4,12 @@ export async function sendMessage(env, chatId, text, options = {}) {
   const token = env.TELEGRAM_BOT_TOKEN;
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
+  // Si el usuario NO especifica parse_mode en options,
+  // usamos HTML por defecto.
   const body = {
     chat_id: chatId,
     text: text,
-    parse_mode: "HTML",
+    parse_mode: options.parse_mode || "HTML",
     ...options
   };
 
@@ -19,6 +21,7 @@ export async function sendMessage(env, chatId, text, options = {}) {
 
   return res;
 }
+
 
 // Send message with a single button (example: Contact admin)
 export async function sendMessageWithButton(env, chatId, text, buttonText, buttonUrl) {
